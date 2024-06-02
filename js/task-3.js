@@ -2,20 +2,16 @@ function makeArray(firstArray, secondArray, maxLength) {
   // Об'єднуємо два масиви в один
   const combinedArray = firstArray.concat(secondArray);
 
-  // Перевіряємо, чи перевищує довжина нового масиву maxLength
-  if (combinedArray.length > maxLength) {
-    // Якщо так, повертаємо копію масиву з довжиною maxLength
-    return combinedArray.slice(0, maxLength);
-  }
+  // Фільтруємо масив, залишаючи тільки ті елементи, які менші або рівні maxLength
+  const filteredArray = combinedArray.filter((element) => element <= maxLength);
 
-  // Якщо ні, повертаємо весь масив
-  return combinedArray;
+  // Повертаємо відфільтрований масив
+  return filteredArray;
 }
 
 // Перевіряємо роботу функції
-console.log(makeArray(["Mango", "Poly"], ["Ajax", "Chelsea"], 3)); // ["Mango", "Poly", "Ajax"]
-console.log(makeArray(["Mango", "Poly", "Houston"], ["Ajax", "Chelsea"], 4)); // ["Mango", "Poly", "Houston", "Ajax"]
-console.log(makeArray(["Mango"], ["Ajax", "Chelsea", "Poly", "Houston"], 3)); // ["Mango", "Ajax", "Chelsea"]
-console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 2)); // ["Earth", "Jupiter"]
-console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 4)); // ["Earth", "Jupiter", "Neptune", "Uranus"]
-console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus", "Venus"], 0)); // []
+console.log(makeArray([10, 20], [5, 15, 25], 20)); // [10, 20, 5, 15]
+console.log(makeArray([1, 2, 3], [4, 5, 6], 4)); // [1, 2, 3, 4]
+console.log(makeArray([7, 8], [9, 10, 11, 12], 10)); // [7, 8, 9, 10]
+console.log(makeArray([1, 2], [3, 4, 5], 2)); // [1, 2]
+console.log(makeArray([100, 200], [300, 400], 150)); // [100]
