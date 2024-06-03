@@ -1,17 +1,22 @@
-function makeArray(firstArray, secondArray, maxLength) {
-  // Об'єднуємо два масиви в один
-  const combinedArray = firstArray.concat(secondArray);
+function filterArray(numbers, value) {
+  // Створюємо порожній масив для зберігання підходящих чисел
+  const filteredNumbers = [];
 
-  // Фільтруємо масив, залишаючи тільки ті елементи, які менші або рівні maxLength
-  const filteredArray = combinedArray.filter((element) => element <= maxLength);
+  // Ітеруємо кожен елемент масиву numbers
+  for (let i = 0; i < numbers.length; i++) {
+    // Якщо елемент більший за value, додаємо його до filteredNumbers
+    if (numbers[i] > value) {
+      filteredNumbers.push(numbers[i]);
+    }
+  }
 
-  // Повертаємо відфільтрований масив
-  return filteredArray;
+  // Повертаємо новий масив з підходящими числами
+  return filteredNumbers;
 }
 
 // Перевіряємо роботу функції
-console.log(makeArray([10, 20], [5, 15, 25], 20)); // [10, 20, 5, 15]
-console.log(makeArray([1, 2, 3], [4, 5, 6], 4)); // [1, 2, 3, 4]
-console.log(makeArray([7, 8], [9, 10, 11, 12], 10)); // [7, 8, 9, 10]
-console.log(makeArray([1, 2], [3, 4, 5], 2)); // [1, 2]
-console.log(makeArray([100, 200], [300, 400], 150)); // [100]
+console.log(filterArray([1, 2, 3, 4, 5], 3)); // [4, 5]
+console.log(filterArray([10, 15, 20, 25], 18)); // [20, 25]
+console.log(filterArray([5, 8, 12, 19], 10)); // [12, 19]
+console.log(filterArray([2, 3, 5, 7, 11], 6)); // [7, 11]
+console.log(filterArray([3, 6, 9, 12, 15], 9)); // [12, 15]
